@@ -9,6 +9,8 @@
 #include <complex>
 #include <tuple>
 
+#include <glaze/glaze.hpp>
+
 // ----------------------------------------------------------------------------
 // we can use enums
 // ----------------------------------------------------------------------------
@@ -23,7 +25,7 @@ enum class E {
 // ----------------------------------------------------------------------------
 struct Nested {
     std::string nested = "nested_value";
-    bool operator==(const Nested& other) const = default;
+    bool operator==(const Nested& other) const = default; // only for testing purposes
 };
 
 // ----------------------------------------------------------------------------
@@ -31,7 +33,7 @@ struct Nested {
 // ----------------------------------------------------------------------------
 struct A {
     int a;
-    bool operator==(const A& other) const noexcept = default;
+    bool operator==(const A& other) const noexcept = default; // only for testing purposes
 
     A operator+(A other) const noexcept {
         return A{a + other.a};
@@ -40,7 +42,7 @@ struct A {
 
 struct B {
     float b;
-    bool operator==(const B& other) const noexcept = default;
+    bool operator==(const B& other) const noexcept = default; // only for testing purposes
 };
 
 using AorB = std::variant<A, B>;
@@ -80,5 +82,5 @@ struct X {
     // variant alternatives that are ambiguous without tags
     AorB aOrB = B{};
 
-    bool operator==(const X& other) const noexcept = default;
+    bool operator==(const X& other) const noexcept = default; // only for testing purposes
 };
